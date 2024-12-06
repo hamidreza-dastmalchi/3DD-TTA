@@ -1,0 +1,7 @@
+from .build import build_dataset_from_cfg
+import datasets_mate.ShapeNet55Dataset
+import datasets_mate.ModelNetDataset
+import datasets_mate.ModelNetDatasetFewShot
+import datasets_mate.ScanObjectNNDataset
+import datasets_mate.PartNormalDataset
+import datasets_mate.ShapeNetCoreDataset

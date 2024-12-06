@@ -1,0 +1,361 @@
+bash_name: ../exp/tmp/2022_0423_0250_59.sh
+clipforge:
+  clip_model: ViT-B/32
+  enable: 0
+  feat_dim: 512
+cls:
+  classifier_type: models.classifier.OneLayer
+  train_on_eps: 1
+cmt: l2e-4
+comet_key: ''
+data:
+  aug_scale: 0.0
+  aug_translate:
+  - 0.0
+  - 0.0
+  - 0.0
+  augment: 0
+  batch_size: 20
+  batch_size_test: 10
+  cates: all
+  clip_forge_enable: 0
+  clip_model: ViT-B/32
+  cls_data_ratio: 1.0
+  data_dir: data/ShapeNetCore.v2.PC15k
+  data_path: ''
+  dataset_scale: 1
+  dataset_type: shapenet15k
+  eval_test_split: 0
+  input_dim: 3
+  is_encode_whole_dataset_trainer: 0
+  is_load_pointflow2NS: 0
+  load_point_stat: ''
+  noise_std: 0.1
+  noise_std_min: -1.0
+  noise_type: normal
+  normalize_global: true
+  normalize_per_shape: false
+  normalize_shape_box: false
+  normalize_std_per_axis: false
+  num_workers: 4
+  random_subsample: 1
+  ratio_c: 1.0
+  recenter_per_shape: false
+  sample_curvature: 0
+  sample_with_replacement: 1
+  sub_train_set: 0.0
+  te_max_sample_points: 2048
+  tr_max_sample_points: 2048
+  train_drop_last: 1
+  type: datasets.neuralspline_datasets
+  voxel_size: 0.1
+ddpm:
+  add_point_feat: true
+  attn:
+  - 0
+  - 1
+  - 0
+  - 0
+  beta_1: 0.0001
+  beta_T: 0.02
+  clip_denoised: 0
+  ddim_step: 200
+  dropout: 0.1
+  ema: 1
+  input_dim: 3
+  loss_type: l1_sum
+  loss_type_0: ''
+  loss_weight_cdnorm: 1.0
+  loss_weight_emd: 1.0
+  model_mean_type: eps
+  model_var_type: fixedlarge
+  ncenter:
+  - 1024
+  - 256
+  - 64
+  - 16
+  num_layers_classifier: 3
+  num_steps: 1000
+  p2_gamma: 1.0
+  p2_k: 1.0
+  pointnet_luo: 0
+  pointnet_plus: 1
+  pointnet_pp: 3
+  pvc:
+    mlp_after_pvc: 0
+    use_small_model: 0
+  sched_mode: linear
+  time_dim: 64
+  use_bn: false
+  use_global_attn: 0
+  use_gn: true
+  use_new_timeemb: 0
+  use_p2_weight: 0
+  use_pvc: 0
+  with_se: 0
+dpm_ckpt: ''
+eval:
+  load_other_vae_ckpt: 0
+  need_denoise: 0
+  other_vae_ckpt_path: ../exp/0127/airplane/4b5a46h_hvae_kl4D3bal_c24d2eh_hvae_ddpmB32l1E3W8/checkpoints/epoch_999_iters_11000.pt
+eval_trainnll: 0
+exp_name: 0423/nsall/e1df8dh_train_l2e-4_vae_adainB20l1E3W8
+generate_mode_global: interpolate
+generate_mode_local: freeze
+has_shapelatent: 1
+hash: e1df8dh
+latent_pts:
+  ada_mlp_init_scale: 0.1
+  decoder_layer_out_dim: 32
+  decoder_nneighbor: 8
+  dgcnn_last_hid: 0
+  encoder_layer_out_dim: 32
+  encoder_nneighbor: 8
+  hid: 64
+  knn: 40
+  latent_as_pts: 0
+  latent_dim_ext:
+  - 64
+  mask_out_extra_latent: 0
+  n5layer: 1
+  normalization: bn
+  outlier_input: 0
+  perturb_input: 0
+  perturb_input_scale: 0.05
+  pts_sigma_offset: 0.0
+  pvd_mse_loss: 1
+  skip_weight: 0.01
+  style_dim: 128
+  style_encoder: models.shapelatent_modules.PointNetPlusEncoder
+  style_mlp: ''
+  style_prior: models.score_sde.resnet.PriorSEDrop
+  use_linear_for_adagn: 0
+  weight_kl_feat: 1.0
+  weight_kl_glb: 1.0
+  weight_kl_pt: 1.0
+lns:
+  num_input_points: 1000
+  num_simulate: 20
+  override_config: ''
+  split_simulate: train
+  wandb_checkpoint: nvidia-toronto/generative_chairs/3m3gc6sz/checkpoint-171.pth
+lns_loss_weight: 1.0
+log_dir: ../exp/0423/nsall/e1df8dh_train_l2e-4_vae_adainB20l1E3W8
+log_name: ../exp/0423/nsall/e1df8dh_train_l2e-4_vae_adainB20l1E3W8
+model_config: default
+ngpu: 8
+normal_pred_checkpoint: ''
+normal_predictor_yaml: ''
+normals:
+  model_type: ''
+num_val_samples: 24
+pointtransformer:
+  blocks:
+  - 2
+  - 3
+  - 4
+  - 6
+  - 3
+save_dir: ../exp/0423/nsall/e1df8dh_train_l2e-4_vae_adainB20l1E3W8
+save_sample_seq_and_quit: 0
+sde:
+  attn_mhead: 0
+  attn_mhead_local: -1
+  autocast_train: false
+  beta_end: 20.0
+  beta_start: 0.1
+  bound_mlogit: 0
+  bound_mlogit_value: -5.42
+  condition_add: 1
+  condition_cat: 0
+  cont_kl_anneal: true
+  dae_checkpoint: ''
+  dataset: shape
+  denoising_stddevs: beta
+  diffusion_steps: 1000
+  drop_inactive_var: 0
+  dropout: 0.3
+  ema_decay: 0.9999
+  embedding_dim: 128
+  embedding_scale: 1.0
+  embedding_type: positional
+  epochs: 800
+  fir: false
+  global_prior_ckpt: ''
+  grad_clip_max_norm: 0.0
+  hier_prior: 0
+  hypara_mixing_logit: 0
+  init_t: 1.0
+  is_continues: 0
+  iw_sample_p: ll_iw
+  iw_sample_q: reweight_p_samples
+  iw_subvp_like_vp_sde: false
+  jac_reg_coeff: 0
+  jac_reg_freq: 1
+  kin_reg_coeff: 0
+  kl_anneal_portion_vada: 0.5
+  kl_balance_vada: false
+  kl_const_coeff_vada: 1.0e-07
+  kl_const_portion_vada: 0.0
+  kl_max_coeff_vada: 0.5
+  learn_mixing_logit: 1
+  learning_rate_dae: 0.0002
+  learning_rate_dae_local: 0.0003
+  learning_rate_min_dae: 0.0002
+  learning_rate_min_dae_local: 0.0003
+  learning_rate_min_vae: 1.0e-05
+  learning_rate_mlogit: -1.0
+  learning_rate_vae: 0.0001
+  local_prior: same_as_global
+  mixed_prediction: false
+  mixing_logit_init: -6
+  nhead: 4
+  num_cell_per_scale_dae: 8
+  num_cell_per_scale_dae_local: 0
+  num_channels_dae: 2048
+  num_latent_scales: 1
+  num_preprocess_blocks: 2
+  num_scales_dae: 2
+  ode_eps: 1.0e-05
+  ode_sample: 0
+  pool_feat_cat: 0
+  pos_embed: none
+  prior_model: models.latent_points_ada_localprior.PVCNN2Prior
+  progressive: none
+  progressive_combine: sum
+  progressive_input: none
+  regularize_mlogit: 0
+  regularize_mlogit_margin: 0.0
+  sde_type: vpsde
+  share_mlogit: 0
+  sigma2_0: 0.0
+  sigma2_max: 0.99
+  sigma2_min: 0.0001
+  time_emb_scales: 1.0
+  time_eps: 0.01
+  train_dae: 1
+  train_ode_solver_tol: 1.0e-05
+  train_vae: false
+  transformer_norm_type: layer_norm
+  transformer_temb2interlayer: 0
+  update_q_ema: false
+  use_adam: true
+  use_adamax: false
+  vae_checkpoint: /mnt2/3dgen/exp/0416/nsall/987392h_hvae_kl0.5N32H1Anneall1_sumWlrInitScale_vae_adainB32l1E3W4/checkpoints/snapshot
+  warmup_epochs: 20
+  weight_decay: 0.0003
+  weight_decay_norm_dae: 0.0
+  weight_decay_norm_vae: 0.0
+set_detect_anomaly: 0
+shapelatent:
+  add_sub_loss: 1
+  add_voxel2z_global: 0
+  bp_to_l0: true
+  center_local_points: 1
+  decoder_num_points: 2048
+  decoder_type: models.latent_points_ada.LatentPointDecPVC
+  downsample_input_ratio: 1.0
+  encoder_type: models.latent_points_ada.PointTransPVC
+  encoder_weight_norm: 0
+  encoder_weight_std: 0.1
+  encoder_weight_uniform: 1
+  eps_z_global_only: 1
+  extra_centers: []
+  freeze_vae: 0
+  global_only_epochs: 0
+  hvae:
+    loss_wrt_ori: 0
+  key_point_gen: mlps
+  kl_weight: 0.5
+  latent_dim: 1
+  latent_flow_depth: 14
+  latent_flow_hidden_dim: 256
+  local_decoder_output_offset: 0
+  local_decoder_type: ''
+  local_decoder_type_1: ''
+  local_emb_agg: mean
+  local_enc_input: sim
+  local_encoder_ap_ball_radius: 1.0
+  local_encoder_ball_radius: 0.8
+  local_encoder_condition_z0: ''
+  local_encoder_type: ''
+  local_encoder_type_1: ''
+  local_loss_weight_max: 50
+  local_prior_need_coords: 0
+  log_sigma_offset: 6.0
+  loss0_weight: 1.0
+  loss_weight_refiner: 1.0
+  model: models.vae_adain
+  num_level: 1
+  num_neighbors: 0
+  num_neighbors_per_level:
+  - 64
+  prior_type: normal
+  prog_dec_gf: 8
+  prog_dec_gf_list:
+  - 0
+  - 0
+  prog_dec_ne: 2
+  query_center_emd_from_enc: 0
+  query_local_feat_dim: 32
+  query_local_feat_layer: inter_voxelfeat_0
+  query_output_local_from_enc: 0
+  refiner_bp: 1
+  refiner_type: models.pvcnn2.PVCNN2BaseAPI
+  residual: 1
+  x0_target_fps: 0
+snapshot_min: 30
+test_size: 660
+trainer:
+  anneal_kl: 1
+  apply_loss_weight_1_kl: 0
+  epochs: 24000
+  kl_balance: 0
+  kl_free:
+  - 0
+  - 0
+  kl_ratio:
+  - 1.0
+  - 1.0
+  kl_ratio_apply: 0
+  loss1_weight_anneal_v: quad
+  opt:
+    beta1: 0.9
+    beta2: 0.99
+    ema_decay: 0.9999
+    grad_clip: -1.0
+    lr: 0.001
+    lr_min: 0.0001
+    momentum: 0.9
+    scheduler: ''
+    start_ratio: 0.6
+    step_decay: 0.998
+    type: adam
+    vae_lr_warmup_epochs: 0
+    weight_decay: 0.0
+  rec_balance: 0
+  seed: 1
+  sn_reg_vae: 0
+  sn_reg_vae_weight: 0.0
+  type: trainers.train_2prior
+  use_grad_scalar: 0
+  use_kl_free: 0
+  warmup_epochs: 0
+use_checkpoint: 0
+vis_latent_point: 1
+viz:
+  log_freq: -1
+  save_freq: 1000
+  val_freq: -10000
+  vis_sample_ddim_step: 0
+  viz_freq: -100
+  viz_order:
+  - 2
+  - 0
+  - 1
+voxel2pts:
+  diffusion_steps:
+  - 0
+  init_weight: ''
+weight_recont: 1.0
+with_lns: 0
