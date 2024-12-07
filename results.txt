@@ -1,4 +1,0 @@
-Corruption: uniform, Accuracy: 0.7625607848167419
-Corruption: uniform, Accuracy: 0.7621555924415588
-Corruption: uniform, Accuracy: 0.7633711695671082
-Corruption: uniform, Accuracy: 0.762965977191925
