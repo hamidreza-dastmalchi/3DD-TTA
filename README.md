@@ -22,30 +22,80 @@ We propose a training-free, online 3D TTA method called **3DD-TTA** (3D Denoisin
 
 ## Install:
 ```
-conda env create --name 3dd_tta --file=environment.yml
-pip install "git+https://github.com/erikwijmans/Pointnet2_PyTorch.git#egg=pointnet2_ops&subdirectory=pointnet2_ops_lib"
+# Create a new Conda environment named "3dd_tta_env" with Python 3.8
+conda create --name 3dd_tta_env python=3.8
+
+# Install PyTorch, torchvision, and torchaudio with CUDA 12.1 support
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+
+# Install all dependencies from requirements.txt
+pip install -r requirements.txt
+
+# Compile and install the Chamfer Distance extension (used for point cloud distance computation)
+cd ./extensions/chamfer_dist
+python setup.py install --user
+cd ..
+
+# Compile and install the Earth Mover's Distance (EMD) extension (used for point cloud comparison)
+cd ./extensions/emd
+python setup.py install --user
+cd ..
+
+# Install the PointNet++ operations library (required for point cloud processing)
+cd Pointnet2_PyTorch/pointnet2_ops_lib
+pip install .
+cd ..
+
+# Install KNN_CUDA (GPU-accelerated k-nearest neighbor functionality)
 pip install --upgrade https://github.com/unlimblue/KNN_CUDA/releases/download/0.2/KNN_CUDA-0.2-py3-none-any.whl
 
+# Install OpenAI's CLIP model (used for vision-language tasks)
+pip install git+https://github.com/openai/CLIP.git 
+
+# Build and package the project
+python build_pkg.py
 ```
 
 ## Data Preparation
 
 Our code supports three datasets: [ModelNet40](https://arxiv.org/abs/1406.5670), [ShapeNetCore](https://arxiv.org/abs/1512.03012), and [ScanObjectNN](https://arxiv.org/abs/1908.04616).
+To prepare the data, please follow the **instructions** in the [preparation guide](./data/readme.md).
 
-### Download Instructions
-To integrate these datasets with our code, download them from the following links:
-- [ModelNet40](https://shapenet.cs.stanford.edu/media/modelnet40_normal_resampled.zip) 
-- [ShapeNetCore](https://cloud.tsinghua.edu.cn/f/06a3c383dc474179b97d/)
-- [ScanObjectNN](https://hkust-vgd.ust.hk/scanobjectnn/h5_files.zip) (Ensure you agree to the terms of use [here](https://forms.gle/g29a6qSgjatjb1vZ6) before downloading.)
+## Obtaining Pre-trained Source Models
+You can download the source model (PointMAE) pretrained on Modelnet40, ShapeNet, and ScanObjectNN from [here](https://drive.google.com/drive/folders/1MTH8WpOqfAIiZ0DZV9p-tSKiDgQ_Id5A?usp=sharing). Put the PointMAE checkpoints inside `pointnet_ckpts` folder. To download the pretrained diffusion model you can use the following [link](https://huggingface.co/xiaohui2022/lion_ckpt/blob/main/unconditional/all55/checkpoints/epoch_10999_iters_2100999.pt). Put the diffusion checkpoints inside `lion_ckpts` folder.
 
-After downloading, extract the contents of each dataset into the same parent directory for easy access.
 
-### Adding Corruptions to the Dataset
+## Qualitative Evaluation of 3dd_tta Model
+To evaluate the model qualitatively, use the following command:
+```
+python demo_3dd_tta.py --diff_ckpt=./lion_ckpts/epoch_10999_iters_2100999.pt --denoising_step=35 --dataset_root=./data/modelnet40_c --corruption=background --sample_id=11
+```
 
-To introduce distribution shifts, you can apply corruptions from the [ModelNet40-C](https://arxiv.org/abs/2201.12296) dataset. 
+- Change the `corruption` argument to the OOD type you desire.
+- For **background noise**, choose higher denoising steps (e.g., `35`) using the `denoising_step` argument.
+- For other corruption types, use lower denoising steps like `5` or `10`.
 
-## Obtaining Pre-trained Models
-You can download the source model (PointMAE) pretrained on Modelnet40, ShapeNet, and ScanObjectNN from [here](https://drive.google.com/drive/folders/1TR46XXp63rtKxH5ufdbfI-X0ZXx8MyKm). To download the pretrained diffusion model you can use the following [link](https://huggingface.co/xiaohui2022/lion_ckpt/blob/main/unconditional/all55/checkpoints/epoch_10999_iters_2100999.pt).
+This code will:
+1. Read the sample determined by the `sample_id` and corrupted by the specified `corruption` type.
+2. Adapt it back to the source domain.
+
+The output will automatically be saved in the `./outputs/qualitative` folder.
+
+
+## Quantitative Evaluation of 3dd_tta Model
+To evaluate the model quantitatively, use the following command:
+```
+python main_3dd_tta.py --batch_size=32 --pointmae_ckpt=./pointnet_ckpts/modelnet_jt.pth --diff_ckpt=./lion_ckpts/epoch_10999_iters_2100999.pt --dataset_name=modelnet-c --dataset_root=./data/modelnet40_c
+```
+### Quantitative Evaluation Instructions
+
+- Use the `--batch_size` argument to modify the batch size according to your requirements.
+- Use the `--dataset_name` argument to select the dataset. Options include:
+  - `modelnet-c`
+  - `shapenet-c`
+  - `scanobjectnn-c`
+- Ensure the `--dataset_root` argument is updated to the appropriate root directory of the selected dataset.
+- The script will automatically evaluate the model across all corruption types and generate a report. The results will be saved in: `./outputs/quantitative`
 
 ## Results:
 Our method demonstrates superior generalization across multiple datasets, including ShapeNet, ModelNet40 and ScanObjectNN.
