@@ -24,6 +24,7 @@ We propose a training-free, online 3D TTA method called **3DD-TTA** (3D Denoisin
 ```
 # Create a new Conda environment named "3dd_tta_env" with Python 3.8
 conda create --name 3dd_tta_env python=3.8
+conda activate 3dd_tta_env
 
 # Install PyTorch, torchvision, and torchaudio with CUDA 12.1 support
 pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
