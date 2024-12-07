@@ -32,20 +32,15 @@ pip3 install torch torchvision torchaudio --index-url https://download.pytorch.o
 # Install all dependencies from requirements.txt
 pip install -r requirements.txt
 
-# Compile and install the Chamfer Distance extension (used for point cloud distance computation)
-cd ./extensions/chamfer_dist
-python setup.py install --user
-cd ..
-
 # Compile and install the Earth Mover's Distance (EMD) extension (used for point cloud comparison)
 cd ./extensions/emd
 python setup.py install --user
-cd ..
+cd ../..
 
 # Install the PointNet++ operations library (required for point cloud processing)
 cd Pointnet2_PyTorch/pointnet2_ops_lib
 pip install .
-cd ..
+cd ../..
 
 # Install KNN_CUDA (GPU-accelerated k-nearest neighbor functionality)
 pip install --upgrade https://github.com/unlimblue/KNN_CUDA/releases/download/0.2/KNN_CUDA-0.2-py3-none-any.whl

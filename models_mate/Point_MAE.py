@@ -10,7 +10,7 @@ from utils_mate.checkpoint import get_missing_parameters_message, get_unexpected
 from utils_mate.logger import *
 import random
 from knn_cuda import KNN
-from extensions.chamfer_dist import ChamferDistanceL1, ChamferDistanceL2
+# from extensions.chamfer_dist import ChamferDistanceL1, ChamferDistanceL2
 
 
 class Encoder(nn.Module):  ## Embedding module
