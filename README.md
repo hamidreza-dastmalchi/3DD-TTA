@@ -1,5 +1,5 @@
 # 3DD-TTA
-**Official PyTorch Implementation of the Paper "Test-Time Adaptation of 3D Point Clouds via Denoising Diffusion Models"**
+**Official PyTorch Implementation of the Paper "[Test-Time Adaptation of 3D Point Clouds via Denoising Diffusion Models](https://arxiv.org/abs/2411.14495)"**
 
 **Test-time adaptation (TTA)** of 3D point clouds is essential for addressing discrepancies between training and testing samples, particularly in corrupted point clouds like those from LiDAR data. Adapting models online to distribution shifts is crucial, as training for every variation is impractical. Existing methods often fine-tune models using self-supervised learning or pseudo-labeling, which can result in forgetting source domain knowledge.
 
