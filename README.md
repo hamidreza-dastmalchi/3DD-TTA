@@ -127,17 +127,11 @@ Our method demonstrates superior generalization across multiple datasets, includ
 
 
 @inproceedings{DBLP:conf/wacv/DastmalchiACRR25,
-  author       = {Hamidreza Dastmalchi and
-                  Aijun An and
-                  Ali Cheraghian and
-                  Shafin Rahman and
-                  Sameera Ramasinghe},
+  author       = {Hamidreza Dastmalchi and Aijun An and Ali Cheraghian and Shafin Rahman and Sameera Ramasinghe},
   title        = {Test-Time Adaptation of 3D Point Clouds via Denoising Diffusion Models},
-  booktitle    = {{IEEE/CVF} Winter Conference on Applications of Computer Vision, {WACV}
-                  2025, Tucson, AZ, USA, February 26 - March 6, 2025},
+  booktitle    = {IEEE/CVF Winter Conference on Applications of Computer Vision (WACV), 2025},
   pages        = {1566--1576},
-  publisher    = {{IEEE}},
   year         = {2025},
-  url          = {https://doi.org/10.1109/WACV61041.2025.00160},
+  publisher    = {IEEE},
   doi          = {10.1109/WACV61041.2025.00160}
 }
