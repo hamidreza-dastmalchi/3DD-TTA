@@ -125,3 +125,22 @@ Our method demonstrates superior generalization across multiple datasets, includ
 | MATE-S                 | _75.0_ | _71.1_ | 27.5  | _67.5_ | _78.7_ | **69.5** | **72.0** | **79.1** | _84.5_ | **75.4** | _44.4_ | _73.6_ | **72.9** | 39.7  | 34.2  | _64.3_ |
 | 3DD-TTA (ours)         | **77.5** | **79.1** | **49.9** | **80.3** | **81.8** | _63.8_ | _66.9_ | **78.5** | **84.7** | 63.7  | 33.4  | **74.7** | 65.2  | _39.9_ | **42.2** | **66.1** |
 
+
+@inproceedings{DBLP:conf/wacv/DastmalchiACRR25,
+  author       = {Hamidreza Dastmalchi and
+                  Aijun An and
+                  Ali Cheraghian and
+                  Shafin Rahman and
+                  Sameera Ramasinghe},
+  title        = {Test-Time Adaptation of 3D Point Clouds via Denoising Diffusion Models},
+  booktitle    = {{IEEE/CVF} Winter Conference on Applications of Computer Vision, {WACV}
+                  2025, Tucson, AZ, USA, February 26 - March 6, 2025},
+  pages        = {1566--1576},
+  publisher    = {{IEEE}},
+  year         = {2025},
+  url          = {https://doi.org/10.1109/WACV61041.2025.00160},
+  doi          = {10.1109/WACV61041.2025.00160},
+  timestamp    = {Wed, 23 Apr 2025 11:40:59 +0200},
+  biburl       = {https://dblp.org/rec/conf/wacv/DastmalchiACRR25.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
