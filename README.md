@@ -126,12 +126,5 @@ Our method demonstrates superior generalization across multiple datasets, includ
 | 3DD-TTA (ours)         | **77.5** | **79.1** | **49.9** | **80.3** | **81.8** | _63.8_ | _66.9_ | **78.5** | **84.7** | 63.7  | 33.4  | **74.7** | 65.2  | _39.9_ | **42.2** | **66.1** |
 
 
-@inproceedings{DBLP:conf/wacv/DastmalchiACRR25,
-  author       = {Hamidreza Dastmalchi and Aijun An and Ali Cheraghian and Shafin Rahman and Sameera Ramasinghe},
-  title        = {Test-Time Adaptation of 3D Point Clouds via Denoising Diffusion Models},
-  booktitle    = {IEEE/CVF Winter Conference on Applications of Computer Vision (WACV), 2025},
-  pages        = {1566--1576},
-  year         = {2025},
-  publisher    = {IEEE},
-  doi          = {10.1109/WACV61041.2025.00160}
-}
+If you find our work useful, please consider citing:
+Dastmalchi, H., An, A., Cheraghian, A., Rahman, S., & Ramasinghe, S. (2025). Test-Time Adaptation of 3D Point Clouds via Denoising Diffusion Models. In WACV 2025 (pp. 1566–1576). IEEE. https://doi.org/10.1109/WACV61041.2025.00160
