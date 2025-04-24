@@ -139,8 +139,5 @@ Our method demonstrates superior generalization across multiple datasets, includ
   publisher    = {{IEEE}},
   year         = {2025},
   url          = {https://doi.org/10.1109/WACV61041.2025.00160},
-  doi          = {10.1109/WACV61041.2025.00160},
-  timestamp    = {Wed, 23 Apr 2025 11:40:59 +0200},
-  biburl       = {https://dblp.org/rec/conf/wacv/DastmalchiACRR25.bib},
-  bibsource    = {dblp computer science bibliography, https://dblp.org}
+  doi          = {10.1109/WACV61041.2025.00160}
 }
